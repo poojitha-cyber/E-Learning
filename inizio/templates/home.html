@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Welcome to INIZIO
+{% endblock %}
+{% block content %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <center><img class="mb-4" src="{{ url_for('static',filename='logo.JPG') }}" alt="Inizio Logo" style="width:300px;height:auto;box-shadow:()4px 25px rgda(0,0,0,0.6);border-radius:20px;transition:transform 0.3s,box-shadow 0.3s ;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 35px rgba(0,0,0,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 25px rgba(0,0,0,0.6)'"></center>
+  <center><p style="font-size:20px;font-size:25px;font-weight:bold">Every expert was once a beginner....<br>   Start today,grow every day.</p></body></center><br>
+  <center><a class="btn btn-primary" href="{{ url_for('courses_page') }}">Get Started</a></center>
+{% endblock %}

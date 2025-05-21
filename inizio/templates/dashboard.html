@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+   Dashboard Page
+{% endblock %}
+{% block content %}
+<h1>Enrolled Courses</h1>
+<h6>Click on the course controls to view more information</h6>
+<br>
+<table class="table table-hover table-dark">
+   <thead>
+     <tr>
+       <th scope="col">Enrolled Course</th>
+       <th scope="col">Course Controls</th>
+     </tr>
+   </thead>
+   <tbody>
+      {% for enrollment in enrollments %}
+      {% include 'includes/includes1.html' %}
+         <tr>
+            <td>{{ enrollment.name }}</td>
+            <td>
+               <button type="button" class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#courseModal-enrolled-{{ enrollment.course_id }}">
+                  More Info
+               </button>
+                  {% if enrollment.result_exists %}
+                        <a href="{{ url_for('view_result', course_id=enrollment.course_id) }}" class="btn btn-success">View Result</a>
+                  {% else %}
+                        <a href="{{ url_for('take_test', course_id=enrollment.course_id) }}" class="btn btn-primary">Take Test</a>
+                  {% endif %}
+            </td>
+         </tr>
+      {% endfor %}
+   </tbody>
+</table>
+
+<!-- Add the "View Overall Progress" button -->
+<div class="text-center mt-4">
+    <a href="{{ url_for('view_overall_progress') }}" class="btn btn-info btn-lg">View Overall Progress</a>
+</div>
+{% endblock %}

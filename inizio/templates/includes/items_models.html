@@ -1,0 +1,39 @@
+<style>
+    .modal-content{
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+<div class="modal fade" id="Modal-enrolled-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">
+            {{ item.name }}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <form method="POST">
+              {{ enroll_form.hidden_tag() }}
+              <h4 class="text-center">
+                Are you sure you want to enroll in {{ item.name }}?
+              </h4>
+              <br>
+              <h6 class="text-center">
+                By clicking "Enroll", you will be enrolled in the course.
+              </h6>
+              <br>
+              <input id="enrolled_course" name="enrolled_course" type="hidden" value={{item.name}}>
+              {{ enroll_form.submit(class="btn btn-outline-success btn-block") }}
+           </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+  

@@ -1,0 +1,27 @@
+<style>
+  .modal-content {
+      background-color: #343a40;
+      color: white;
+  }
+</style>
+<div class="modal fade" id="courseModal-enrolled-{{ enrollment.course_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">
+                  {{ enrollment.name }}
+              </h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">x</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p><strong>Course code:</strong>{{ enrollment.course_code }}</p>
+              <p><strong>Enrolled Date:</strong> {{ enrollment.date_enrolled }}</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Overall Progress
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Overall Progress</h1>
+
+<div style="width: 600px; margin: auto;">
+    <canvas id="progressChart"></canvas>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Add a "Go Back to Dashboard" button -->
+<div class="text-center mt-3">
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-lg">Go Back to Dashboard</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('progressChart').getContext('2d');
+    var progressChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ course_names|tojson }},
+            datasets: [{
+                label: 'Marks',
+                data: {{ marks|tojson }},
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Marks'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Courses'
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

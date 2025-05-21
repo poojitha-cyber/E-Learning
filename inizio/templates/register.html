@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block content %}
+<body class="text-center" style="background-color: #343a40;">
+    <div class="container">
+        <form method="POST" class="form-register" style="color:white">
+            {{ form.hidden_tag() }}
+            <img class="mb-4" src="{{ url_for('static',filename='logo.JPG') }}" alt="Inizio Logo" style="width:200px;height:auto;box-shadow:()4px 25px rgda(0,0,0,0.6);border-radius:20px;transition:transform 0.3s,box-shadow 0.3s ;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 35px rgba(0,0,0,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 25px rgba(0,0,0,0.6)'">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Create your Account
+            </h1>
+            <br>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control",placeholder="User Name") }}
+
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control",placeholder="Email Address") }}
+
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control",placeholder="Password") }}
+
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control",placeholder="Confirm Password") }}
+            <br>
+            <div class="checkbox mb-3">
+                <h6>Already have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+             </div>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}

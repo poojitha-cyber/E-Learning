@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+   Take Test
+{% endblock %}
+{% block content %}
+<h1>Take Test for {{ course.name }}</h1>
+<p>Course Code: {{ course.code }}</p>
+<form method="POST">
+   {% for question in questions %}
+      <div>
+          <p><strong>{{ loop.index }}. {{ question.question_text }}</strong></p>
+          <div>
+              <label><input type="radio" name="q{{ question.id }}" value="{{ question.option1 }}"> {{ question.option1 }}</label><br>
+              <label><input type="radio" name="q{{ question.id }}" value="{{ question.option2 }}"> {{ question.option2 }}</label><br>
+              <label><input type="radio" name="q{{ question.id }}" value="{{ question.option3 }}"> {{ question.option3 }}</label><br>
+              <label><input type="radio" name="q{{ question.id }}" value="{{ question.option4 }}"> {{ question.option4 }}</label><br>
+          </div>
+       </div>
+   {% endfor %}
+   <center><button type="submit" class="btn btn-primary">Submit</button></center>
+</form>
+{% endblock %}
